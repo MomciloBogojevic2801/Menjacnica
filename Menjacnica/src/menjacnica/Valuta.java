@@ -1,53 +1,78 @@
 package menjacnica;
 
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class Valuta {
 
 	private String naziv;
-    private String kod; // ovo predstavlja skracenicu dolar - > USD
-    private GregorianCalendar datum;
-    private double prodajniKurs;
-    private double kupovniKurs;
-    private double srednjiKurs;
-	
-    
-    public String getNaziv() {
+	private String kod; // ovo predstavlja skracenicu dolar - > USD
+	private GregorianCalendar datum;
+	private double prodajniKurs;
+	private double kupovniKurs;
+	private double srednjiKurs;
+
+	public String getNaziv() {
 		return naziv;
 	}
+
 	public void setNaziv(String naziv) {
+		if (naziv == null)
+			throw new MenjacnicaException("Uneti naziv je null!");
 		this.naziv = naziv;
 	}
+
 	public String getKod() {
 		return kod;
 	}
+
 	public void setKod(String kod) {
+		if (kod == null)
+			throw new MenjacnicaException("Uneti kod valute je null!");
 		this.kod = kod;
 	}
+
 	public GregorianCalendar getDatum() {
 		return datum;
 	}
+
 	public void setDatum(GregorianCalendar datum) {
+		if (datum == null)
+			throw new MenjacnicaException("Uneta vrednost je null!"); // razmisli o tome da li moze da se stavi
+																		// drugacija provera?
 		this.datum = datum;
 	}
+
 	public double getProdajniKurs() {
 		return prodajniKurs;
 	}
+
 	public void setProdajniKurs(double prodajniKurs) {
+		if (prodajniKurs <= 0)
+			throw new MenjacnicaException("Uneta vrednost nije dozvoljena!");
 		this.prodajniKurs = prodajniKurs;
 	}
+
 	public double getKupovniKurs() {
 		return kupovniKurs;
 	}
+
 	public void setKupovniKurs(double kupovniKurs) {
+		if (kupovniKurs <= 0)
+			throw new MenjacnicaException("Uneta vrednost nije dozvoljena!");
 		this.kupovniKurs = kupovniKurs;
 	}
+
 	public double getSrednjiKurs() {
 		return srednjiKurs;
 	}
+
 	public void setSrednjiKurs(double srednjiKurs) {
+		if (srednjiKurs <= 0)
+			throw new MenjacnicaException("Uneta vrednost nije dozvoljena!");
 		this.srednjiKurs = srednjiKurs;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -64,6 +89,7 @@ public class Valuta {
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -96,18 +122,16 @@ public class Valuta {
 			return false;
 		return true;
 	}
-/*	@Override
+
+	/*
+	 * @Override public String toString() { return "Valuta [naziv=" + naziv +
+	 * ", kod=" + kod + ", datum=" + datum + ", prodajniKurs=" + prodajniKurs +
+	 * ", kupovniKurs=" + kupovniKurs + ", srednjiKurs=" + srednjiKurs + "]"; }
+	 */
+	@Override
 	public String toString() {
-		return "Valuta [naziv=" + naziv + ", kod=" + kod + ", datum=" + datum + ", prodajniKurs=" + prodajniKurs
-				+ ", kupovniKurs=" + kupovniKurs + ", srednjiKurs=" + srednjiKurs + "]";
+		return "Valuta: Naziv: " + naziv + ", Kod: " + kod + ", Datum: " + datum.getTime() + ", Prodajni kurs: "
+				+ prodajniKurs + ", Kupovni kurs: " + kupovniKurs + ", Srednji kurs: " + srednjiKurs;
 	}
-*/	
-	 @Override
-	    public String toString() {
-	        return "Valuta: Naziv: " + naziv + ", Kod: " + kod + ", Datum: " + datum.getTime() + ", Prodajni kurs: " + prodajniKurs
-	                + ", Kupovni kurs: " + kupovniKurs + ", Srednji kurs: " + srednjiKurs;
-	    }
-    
-    
-    
+
 }
