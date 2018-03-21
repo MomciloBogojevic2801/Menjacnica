@@ -1,10 +1,10 @@
 package menjacnica.interfejs;
 
-import menjacnica.Valuta;
+import menjacnica.KursnaLista;
 
 public interface MenjacnicaInterfejs {
 
-	public void dodajKurs(String kod, String naziv, double prodajniKurs, double kupovniKurs, double srednjiKurs); // bez datuma, uzima
+	public void dodajKurs(String kod, double prodajniKurs, double kupovniKurs, double srednjiKurs); // bez datuma, uzima
 																									// se datum trenutka
 																									// unosenja zbog
 																									// jednostavnosti
@@ -12,6 +12,6 @@ public interface MenjacnicaInterfejs {
 	public void obrisiKurs(String kod); // brise sve kurseve za danasnji datum, onemogucava se pristup kursevima od
 										// prethodnih dana
 
-	public Valuta vratiKurs(String kod); // vraca kursnu listu za odredjenu valutu, datum trenutka poziva
+	public KursnaLista vratiKurs(String kod); // vraca kursnu listu za odredjenu valutu, datum trenutka poziva
 
 }
